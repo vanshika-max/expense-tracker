@@ -16,7 +16,7 @@ const ExpenseForm = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/expenses`, 
+      await axios.post('http://localhost:5000/api/expenses', 
         { amount, category, description }, 
         {
           headers: {
