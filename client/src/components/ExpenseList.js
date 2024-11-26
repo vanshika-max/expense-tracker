@@ -186,7 +186,7 @@ const ExpenseList = () => {
         <CSVLink
           data={csvData}
           filename={`expenses_${selectedMonth || 'all_months'}.csv`}
-          className="bg-[#1d3265] text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+          className="bg-[#0f0f0a] text-white py-2 px-4 rounded-lg hover:bg-blue-600"
         >
           Download Expenses
         </CSVLink>
