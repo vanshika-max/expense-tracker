@@ -55,6 +55,22 @@ const ExpenseList = () => {
         alert('Please enter a valid budget amount.');
       }
     };
+
+    //delete an expense
+    const deleteExpense = async (id) => {
+      try {
+        const token = localStorage.getItem('token');
+        await axios.delete(`${url}/api/expenses/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setExpenses(expenses.filter((expense) => expense._id !== id));
+      } catch (err) {
+        console.error('Error deleting expense:', err);
+        alert('Failed to delete expense. Please try again.');
+      }
+    };
    
 
 
@@ -132,6 +148,7 @@ const ExpenseList = () => {
               <th className="py-2 px-4 border-b bg-[#574bbe] text-white">Amount</th>
               <th className="py-2 px-4 border-b bg-[#574bbe] text-white">Description</th>
               <th className="py-2 px-4 border-b bg-[#574bbe] text-white">Date</th>
+              <th className="py-2 px-4 border-b bg-[#574bbe] text-white">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -141,6 +158,14 @@ const ExpenseList = () => {
                 <td className="py-2 px-4 border-b text-center bg-[#ffd0d0]">${expense.amount}</td>
                 <td className="py-2 px-4 border-b text-center bg-[#ffd0d0]">{expense.description}</td>
                 <td className="py-2 px-4 border-b text-center bg-[#ffd0d0]">{new Date(expense.date).toLocaleDateString()}</td>
+                <td className="py-2 px-4 border-b text-center bg-[#ffd0d0]">
+                  <button
+                    onClick={() => deleteExpense(expense._id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700"
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
              
