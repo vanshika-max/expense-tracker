@@ -10,14 +10,14 @@ const ExpenseList = () => {
   const [monthlyBudget, setMonthlyBudget] = useState(0); 
   const [remainingBudget, setRemainingBudget] = useState(0); 
   const [budgetInput, setBudgetInput] = useState(''); 
-
+  const url = "https://expense-tracker-upba.onrender.com";
 
 
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/expenses', {
+        const response = await axios.get(`${url}/api/expenses`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

@@ -16,9 +16,10 @@ const Login = () => {
     e.preventDefault();
     console.log('Email:', email);
     console.log('Password:', password);
-
+    console.log(`${process.env.BACKEND_URL}`)
+    const url = "https://expense-tracker-upba.onrender.com";
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const response = await axios.post(`${url}/api/users/login`, { email, password });
       console.log('Login successful:', response.data);
      
       

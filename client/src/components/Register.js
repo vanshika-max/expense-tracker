@@ -8,10 +8,11 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [successMessage,setSuccessMessage]=useState('');
+  const url = "https://expense-tracker-upba.onrender.com";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', {
+      const response = await axios.post(`${url}/api/users/register`, {
         name,
         email,
         password

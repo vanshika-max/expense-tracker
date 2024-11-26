@@ -11,12 +11,12 @@ const ExpenseForm = () => {
   const [success, setSuccess] = useState('');
 
   const navigate = useNavigate(); // Use useNavigate hook
-
+  const url = "https://expense-tracker-upba.onrender.com";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/expenses', 
+      await axios.post(`${url}/api/expenses`, 
         { amount, category, description }, 
         {
           headers: {
