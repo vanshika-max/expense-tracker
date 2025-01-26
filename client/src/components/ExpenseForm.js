@@ -29,7 +29,7 @@ const ExpenseForm = () => {
       setAmount('');
       setCategory('');
       setDescription('');
-      setTimeout(() => navigate('/expenses'), 1500); // Redirect after a short delay
+      setTimeout(() => navigate('/expenses'), 1000); // Redirect after a short delay
     } catch (err) {
       setError('Error adding expense: ' + (err.response ? err.response.data.error : err.message));
       setSuccess('');
